@@ -1,6 +1,6 @@
 class Solution {
 public:
-    //Greedy O(n)
+    /*Greedy O(n)
     int maxProfit(vector<int>& prices) {
         if(prices.size() < 2) return 0;      
         int maxProfit = 0, minPrice = prices[0];
@@ -15,8 +15,9 @@ public:
 
         return maxProfit;
     }
-    /* DP Max Subarray
-    int maxProfit(int[] prices) {
+    */
+    // DP Max Subarray
+    int maxProfit(vector<int>& prices) {
         int maxCur = 0, maxSoFar = 0;
         for(int i = 1; i < prices.size(); i++) {
             maxCur = max(0, maxCur += prices[i] - prices[i-1]);
@@ -24,5 +25,5 @@ public:
         }
         return maxSoFar;
     }
-    */
+    
 };
