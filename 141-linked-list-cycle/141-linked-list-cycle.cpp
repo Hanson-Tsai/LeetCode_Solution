@@ -8,6 +8,7 @@
  */
 class Solution {
 public:
+    // O(N)
     bool hasCycle(ListNode *head) {
         
         if(head != NULL && head->next != NULL && head->next->next){
