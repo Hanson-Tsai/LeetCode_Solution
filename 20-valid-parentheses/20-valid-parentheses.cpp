@@ -2,6 +2,7 @@
 
 class Solution {
 public:
+    // O(N)
     bool isValid(string s) {
     stack<char> st;
     for(char c : s){
