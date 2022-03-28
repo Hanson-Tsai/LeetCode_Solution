@@ -1,5 +1,6 @@
 class MinStack {
 public:
+    // Time:O(1) Space:O(N)
     vector < pair<int, int> > s;
     
     MinStack() { }
