@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // Time: O(NlogN)
     int majorityElement(vector<int>& nums) {
         if(nums.size() <= 1)return nums[0];
         int bound = nums.size()/2;
