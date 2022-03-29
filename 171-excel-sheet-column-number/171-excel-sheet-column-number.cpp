@@ -5,7 +5,7 @@ public:
         int result = 0;
         
         for(int i=0; i<n; i++){
-            result = result + ((int)columnTitle[i] - 64)*pow(26, n-1-i);
+            result = result*26 + ((int)columnTitle[i] - 64);
         }
         return result;
     }
