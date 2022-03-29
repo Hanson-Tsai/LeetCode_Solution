@@ -10,6 +10,7 @@
  */
 class Solution {
 public:
+    // O(n)
     ListNode* reverseList(ListNode* head) {
         ListNode* front;
         ListNode* back = NULL;
