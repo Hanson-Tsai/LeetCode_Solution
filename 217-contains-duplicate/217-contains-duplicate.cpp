@@ -1,15 +1,7 @@
 class Solution {
 public:
-    //Time:O(NlogN) Space:O(1)
+    //Time:O(N) Space:O(1)
     bool containsDuplicate(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
-        
-        if(nums.size() <= 1)return false;
-        
-        for(int i=0; i<nums.size()-1; i++){
-            if(nums[i] == nums[i+1])return true;
-        }
-        
-        return false;
+        return nums.size() > unordered_set(nums.begin(), nums.end()).size();
     }
 };
