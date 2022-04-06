@@ -1,23 +1,16 @@
 class Solution {
 public:
     vector<string> generateParenthesis(int n) {
-        vector<string> result;
-        if (n < 1) return result;
-        string parens;
-        collect(result, parens, n, n);
-        return result;
+        vector<string> ret;
+        helper(ret, "", n, n);
+        return ret;
     }
-    void collect(vector<string> &result, string &parens, int left, int right) {
-        if (left > right || left < 0) return;
-        if (left + right == 0) {
-            result.push_back(parens);
+    void helper(vector<string> & res, string str, int left, int right){
+        if(left == 0 && right == 0){
+            res.push_back(str);
             return;
         }
-        parens.push_back('(');
-        collect(result, parens, left - 1, right);
-        parens.pop_back();
-        parens.push_back(')');
-        collect(result, parens, left, right - 1);
-        parens.pop_back();
+        if(left > 0) helper(res, str + "(", left - 1, right);
+        if(right > left) helper(res, str + ")", left, right - 1);
     }
 };
