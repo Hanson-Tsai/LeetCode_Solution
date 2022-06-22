@@ -1,25 +1,31 @@
 class Solution {
 public:
-    bool findWord(vector<vector<char>> &board, string word, int i, int j){
-        if (!word.size())
-            return true;
-        if (i<0 || i>=board.size() || j<0 || j>=board[0].size() || board[i][j] != word[0])  
-            return false;
-        char c = board[i][j];
-        board[i][j] = '*';
-        string s = word.substr(1);
-        bool ret = findWord(board, s,i-1, j) || findWord(board, s,i+1, j) || findWord(board, s, i, j-1) || findWord(board, s, i, j+1);
-        board[i][j] = c;
-        return ret;
-    }
-    
     bool exist(vector<vector<char>>& board, string word) {
-        for(int i=0; i<board.size(); i++){
-            for(int j=0; j<board[0].size(); j++){
-                if(findWord(board, word, i, j))
-                    return true;
-            }
-        }
+        if (word.empty()) return true;
+        if (board.empty() || board[0].empty()) return false;
+        
+        m = board.size();
+        n = board[0].size();
+        for (int i = 0; i < m; ++i)
+            for (int j = 0; j < n; ++j)
+                // traverse the board to find the first char
+                if (dfsSearch(board, word, 0, i, j)) return true;
         return false;
+    }
+private:
+    int m;
+    int n;
+    bool dfsSearch(vector<vector<char>>& board, string& word, int k, int i, int j) {
+        if (i < 0 || i >= m || j < 0 || j >= n || word[k] != board[i][j]) return false;
+        if (k == word.length() - 1) return true;  // found the last char
+
+        char cur = board[i][j];
+        board[i][j] = '*';  // used
+        bool search_next = dfsSearch(board, word, k+1, i-1 ,j) 
+                        || dfsSearch(board, word, k+1, i+1, j) 
+                        || dfsSearch(board, word, k+1, i, j-1)
+                        || dfsSearch(board, word, k+1, i, j+1);
+        board[i][j] = cur;  // reset
+        return search_next;
     }
 };
