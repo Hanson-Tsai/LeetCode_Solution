@@ -14,8 +14,6 @@ public:
     vector<int> rank;
     int kthSmallest(TreeNode* root, int k) {
         LDR(root);
-        sort(rank.begin(), rank.end());
-        
         return rank[k-1];
     }
     
